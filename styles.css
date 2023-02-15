@@ -361,6 +361,28 @@ section{
 
     /* MOBILE-MAIN */
 
+
+    /* details */
+
+    #details_main_div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #details_div{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+    }
+
+    #details_info{
+
+          display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+
+    }
+
     /* stats */
 
     #stats_table th{
