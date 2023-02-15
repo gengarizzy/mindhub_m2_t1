@@ -1,0 +1,268 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+/* HEADER  */
+
+#header_container{
+    background-color: rgb(128, 128, 128);
+    height: 15vh;
+    
+}
+
+#logo_amazing_events{
+    width: 10vw;
+    margin-left: 1em;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+#header_ul_links{
+    right: 4em !important;
+    list-style-type: none;
+}
+
+#header_ul_links li{
+    display: flex;;
+    font-size: 1em;
+    background-color: white;
+    padding: 0.3em;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 6em;
+    height: 3em;
+    
+}
+
+#header_ul_links a{
+    text-decoration: none;
+}
+
+#name_and_arrows{
+    height: 15vh;
+    text-align: center;
+
+   
+    
+    justify-content: space-between;
+
+    background-color: rgb(195, 194, 197) !important;
+    
+
+   
+}
+
+#name_and_arrows > h2 {
+    font-size: 4em !important;
+    font-weight: bold;
+
+}
+
+.flecha_link{
+   
+   width: 5em;
+   height: 5em;
+}
+
+#flecha_siguiente_stats{
+    display: none;
+}
+
+#flecha_anterior_home{
+    display: none;
+}
+
+
+
+/* MAIN */
+
+#stats_table{
+    width: 80vw;
+}
+
+#stats_table th{
+    background-color: rgb(169, 163, 163);
+    font-size: 1em;
+}
+
+#details_main_div{
+    display: flex;
+    justify-content: center;
+    margin: 5em 0 5em 0;
+    background-color: beige;
+    width: 70vw;
+    margin-left: 15vw;
+    border: 1px solid black;
+
+}
+
+#details_div{
+    
+    width: 80vw;
+    height: 60vh;
+    justify-content: center;
+    
+    
+}
+
+#details_img{
+    width: 20em;
+    height: 20em;
+    margin-left: 5em;
+    border: 1px solid black;
+}
+
+#details_info{
+    width: 20em;
+    height: 20em;
+    flex-direction: column;
+    margin-right: 5em;
+    border: 1px solid black;
+}
+
+
+#nav_container{
+    height: 3em;
+  
+}
+
+#ul_navbar li{
+    padding: 0 2em 0 2em; /*: top right bottom left*/
+}
+
+#navbar_input{
+    width: 40em;
+}
+
+#cards_container{
+
+    height: 70vh;
+    padding-top: 2em;
+
+    
+   
+    
+}
+
+
+
+
+
+
+#cards_container img{
+    height: 35vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_bottom_button{
+    width: 6em;
+    border-radius: 50%;
+    
+}
+
+#navbar_lupa{
+    width: 3em;
+    padding: 0 0 0 1em;
+}
+
+
+
+section{
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+
+#contact_form_div{ 
+    
+    
+    text-align: center;
+    font-size: 2em;
+    margin-top: 3em;
+    
+    justify-content: center;
+    margin-bottom: 2em;
+    
+}
+
+#form_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact_form_name{
+    width: 50%;
+}
+
+#contact_form_mail{
+    width: 50%;
+}
+
+#contact_form_message{
+    flex-direction: column;
+}
+
+
+
+#contact_form_message textarea {
+    
+    height: 15vh;
+    width: 50%;
+   
+}
+
+
+/* FOOTER */
+
+#footer_container{
+    background-color: lightcyan;
+    height: 10vh;
+    
+
+}
+
+#footer_left{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    gap: 1.5em;
+}
+
+#footer_right{
+    width: 50%;
+    justify-content: end;
+}
+
+#footer_right h3{
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    margin-right: 50px;
+}
+
+.logo_redes{
+    width: 50px;
+    height: 50px;
+   
+}
