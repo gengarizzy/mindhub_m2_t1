@@ -9,7 +9,11 @@
     font-style: italic;
 }
 
-/* HEADER  */
+
+/* Desktop */
+@media only screen and (min-width:769px){
+
+    /* HEADER  */
 
 #header_container{
     background-color: rgb(128, 128, 128);
@@ -98,6 +102,10 @@
     font-size: 1em;
 }
 
+#stats_table td{
+    height: 2em;
+}
+
 #details_main_div{
     display: flex;
     justify-content: center;
@@ -136,15 +144,27 @@
 
 #nav_container{
     height: 3em;
+    align-items: center;
   
 }
+
+
+#search_and_glass{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 #ul_navbar li{
     padding: 0 2em 0 2em; /*: top right bottom left*/
 }
 
+
+
 #navbar_input{
     width: 40em;
+    margin-top: 2em;
 }
 
 #cards_container{
@@ -176,6 +196,9 @@
 .card_bottom_button{
     width: 6em;
     border-radius: 50%;
+    background-color: blue;
+    color: whitesmoke;
+    
     
 }
 
@@ -232,6 +255,11 @@ section{
    
 }
 
+#contact_form_message_button{
+    margin-top: 0.5em;
+}
+
+
 
 /* FOOTER */
 
@@ -257,7 +285,7 @@ section{
 #footer_right h3{
     color: black;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     margin-right: 50px;
 }
 
@@ -266,3 +294,207 @@ section{
     height: 50px;
    
 }
+
+}
+
+
+
+
+
+
+/* Mobile */
+@media only screen and (max-width:769px){
+
+    /* MOBILE-HEADER */
+
+    #header_container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+        background-color: grey
+    }
+    
+    #logo_amazing_events{
+        width: 20em;
+        
+    }
+    
+    #header_ul_links{
+        text-align: center;
+        justify-content: center;
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-bottom: 1em !important;
+    }
+    
+    #header_ul_links a{
+        font-size: 1.5em !important;
+        text-align: center;
+        color:white !important;
+        text-decoration: none;
+    }
+
+    #name_and_arrows{
+        background-color: rgb(195, 194, 197) !important;
+    }
+    
+    #name_and_arrows img{
+        width: 5em;
+    }
+
+   
+    
+   
+  
+    
+   
+    
+    
+   
+
+
+
+
+
+
+
+    /* MOBILE-MAIN */
+
+    /* stats */
+
+    #stats_table th{
+    background-color: rgb(169, 163, 163);
+    font-size: 1em;
+}
+
+#stats_table td{
+    height: 3em;
+    font-size: 0.8em;
+}
+
+
+    /* navbar */
+    #navbar{
+    
+        background-color: whitesmoke !important;
+       
+      
+        z-index: 1;
+        margin-top: 1em;
+        
+    }
+
+    #ul_navbar_div{
+        display: flex;
+       flex-direction: column;
+        
+        align-items: center !important;;
+    }
+
+   
+
+    #ul_navbar{
+        
+        display: flex;
+        flex-direction: column !important;;
+        color: red;
+        font-size: 1.5em;
+       
+        gap: 0.8em;
+        align-items: center !important;
+    }
+
+   
+
+
+     
+    #navbar_lupa{
+        width: 1.5em;
+        height: 1.5em;
+        margin: 0 0 1.3em 1em;
+    }
+
+    #navbar_input{
+        width: 17em;
+    }
+
+    #search_and_glass{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* cards */
+    #cards_container{
+    margin-top: 10em;
+}
+
+.card_bottom_button{
+    width: 6em;
+    border-radius: 50%;
+    background-color: blue;
+    color: whitesmoke;
+    
+}
+
+/* contact */
+
+#contact_form_div{
+    margin-top: 2em;
+}
+
+#contact_form_message{
+    
+    display: flex;
+    flex-direction: column;
+   
+}
+#contact_form_message_button{
+    margin-top: 0.5em;
+}
+
+    
+
+
+
+ /* MOBILE FOOTER */
+    
+ .logo_redes{
+    width: 2em;
+}
+
+#footer_left{
+    width: 50%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
+
+#footer_right{
+    width: 50%;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    
+}
+
+#footer_right h3{
+    font-size: 2em;
+    margin-top: 0.2em;
+}
+
+#footer_container{
+    background-color: lightblue;;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1em;
+    
+}
+
+
+}
+
+
