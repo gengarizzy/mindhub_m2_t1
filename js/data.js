@@ -1,4 +1,6 @@
-{
+
+
+const data = {
     "currentDate": "2022-01-01",
     "events": [
       {
@@ -170,4 +172,8 @@
         "price":250
       }
     ]
-  }
+  };
+  // Le puse nombre al array de data.js, lo declare como una constante
+
+  export default data;
+  // Exporto a la constante data que acabo de crear, la que contiene al array
