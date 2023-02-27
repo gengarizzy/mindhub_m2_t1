@@ -10,6 +10,8 @@
 }
 
 
+
+
 /* Desktop */
 @media only screen and (min-width:769px){
 
@@ -171,6 +173,11 @@
 
     height: 70vh;
     padding-top: 2em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 
     
    
@@ -180,7 +187,11 @@
 
 
 
-
+.card{
+    width: 90%;
+    
+    
+}
 
 #cards_container img{
     height: 35vh;
@@ -261,11 +272,15 @@ section{
 
 
 
+
+
+
 /* FOOTER */
 
 #footer_container{
     background-color: lightcyan;
     height: 10vh;
+    margin-top: 50px;
     
 
 }
@@ -372,7 +387,7 @@ section{
     #details_div{
         display: flex;
         flex-direction: column;
-        margin-top: 1em;
+        margin-top: 1emg;
     }
 
     #details_info{
@@ -452,6 +467,10 @@ section{
     /* cards */
     #cards_container{
     margin-top: 10em;
+}
+
+.card{
+    margin-top: 2em;
 }
 
 .card_bottom_button{
