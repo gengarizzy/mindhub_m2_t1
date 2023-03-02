@@ -12,6 +12,7 @@
 
 
 
+
 /* Desktop */
 @media only screen and (min-width:769px){
 
@@ -150,11 +151,26 @@
   
 }
 
+#search-input{
+    border: 2px solid black;
+    width: 40vw;
+    
+}
+
 
 #search_and_glass{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
+} 
+
+#search_and_glass form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
 }
 
 
@@ -165,42 +181,48 @@
 
 
 #navbar_input{
-    width: 40em;
+    width: 100em;
     margin-top: 2em;
 }
 
-#cards_container{
 
+
+
+#message-container{
+   display: flex;
    
-    padding-top: 2em;
-    width: 100%;
+    text-align: center !important;
+    font-size: 5em;
+}
+
+#cards-row {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 20px;
-
-    
    
     
-}
+  }
 
-
-.col{
-    margin-bottom: 2em;
+  .card {
+    max-height: 600px; /* altura máxima para el contenedor de la tarjeta */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    margin-left: 50px;
     
-}
+   
+  }
+  
+  .card-img-top {
+    height: 400px; /* altura específica para el elemento de la imagen dentro de la tarjeta */
+    object-fit: cover; /* Ajustar la imagen para que llene el contenedor sin distorsión */
+  }
 
-.card{
-    width: 90%;
-    
-    
-}
 
-#cards_container img{
-    height: 35vh;
-    width: 100%;
-    object-fit: cover;
-}
+    height: 10%;
+    width:10% ;
+   
+
 
 .card_bottom{
     display: flex;
