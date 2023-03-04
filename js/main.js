@@ -25,7 +25,8 @@ for(let event of data.events){
                 <p class="card-text">${event.description}</p>
                 <div class="card_bottom">
                     <h5>Price: $ ${event.price}</h5>
-                    <button onclick="window.location.href='./details.html';" class="card_bottom_button">
+                    <button onclick="window.location.href='./details.html?category=${event.category}&image=${event.image}&name=${event.name}&date=${event.date}&place=${event.place}&description=${event.description}&price=${event.price}';"
+                    class="card_bottom_button">
                         Ver mas
                     </button>
                 </div>
@@ -38,6 +39,7 @@ for(let event of data.events){
 eventContainer.appendChild(card); //Luego de generar toda la variable card, con appendChild se la sumo al div de id #cards-row que 
 //tengo como contenedor principal de las cards
 }
+
 
 
 
@@ -86,54 +88,82 @@ for(let event of data.events) { //recorro cada evento del array events, pertenec
 
 
 //Barra de busqueda + categorias funcionando
-const searchButton = document.getElementById('search-button');
-const searchInput = document.getElementById('search-input');
-const checkboxes = document.querySelectorAll("input[type='checkbox']");
-const cards = document.querySelectorAll(".card");
-const messageContainer = document.getElementById("message-container");
+
+const searchInput = document.getElementById('search-input'); // Selecciono la barra de busqueda
+const checkboxes = document.querySelectorAll("input[type='checkbox']"); //selecciono los checkbox
+const cards = document.querySelectorAll(".card"); //selecciono mis cards
+const messageContainer = document.getElementById("message-container"); //selecciono un div que tengo para mostrar el msj de error
+
+
 
 function buscarYFiltrar() {
-  const searchTerm = searchInput.value.toLowerCase();
-  let selectedCategories = [];
+  const searchTerm = searchInput.value.toLowerCase(); //pasa el contenido de la barra de busqueda a minuscula para evitar errores
+  let selectedCategories = []; //Creo un array que se va a llenar en funcion a los checkboxes que vaya marcando
   
-  for (let checkbox of checkboxes) {
-    if (checkbox.checked) {
-      selectedCategories.push(checkbox.value);
+  for (let checkbox of checkboxes) { //recorre los checkboxes
+    if (checkbox.checked) { //si un checkbox esta marcado,
+      selectedCategories.push(checkbox.value); // lo agrego a mi array que se llena en función a los checkboxes marcados
     }
   }
 
-  let visibleCards = 0;
-  for (let card of cards) {
-    const cardName = card.getElementsByTagName('h3')[0].innerText.toLowerCase();
-    const cardDescription = card.getElementsByTagName('p')[0].innerText.toLowerCase();
-    const cardCategories = card.dataset.category.split(" ");
-    let showCard = true;
+  let visibleCards = 0; // Creo una variable de cards visibles, que me va a servir para mostrar o no el mensaje de error
+  for (let card of cards) { //recorre cada card de la constante cards, la que declare antes y me selecciona todos los elementos con clase card
+    const cardName = card.getElementsByTagName('h3')[0].innerText.toLowerCase(); //En h3 tengo el nombre, paso todo a minus para evitar error
+    const cardDescription = card.getElementsByTagName('p')[0].innerText.toLowerCase(); // en el p tengo la descripción, lo mismo que arriba
+    const cardCategories = card.dataset.category.split(" "); //Esto no se bien como funciona, pero me toma el valor de la category que puse en
+    //la creación de las cards. HELP ME!
+    let showCard = true; //Por defecto, mi variable que indica si la carta se muestra o no, esta activo
 
     if (searchTerm !== '' && !cardName.includes(searchTerm) && !cardDescription.includes(searchTerm)) {
       showCard = false;
     }
+  // Si la barra de busqueda no esta vacia, y ni el nombre de la card ni su descripcion corresponden al contenido de la misma, 
+  // la variable que indica la visibilidad pasa a falsa.
+  // O sea, si escribo algo pero esto no corresponde a la card en nombre ni descripcion, se oculta
 
-    for (let category of cardCategories) {
+    for (let category of cardCategories) { //Recorro cada categoria
       if (selectedCategories.length > 0 && !selectedCategories.includes(category)) {
         showCard = false;
         break;
       }
+      //Si el array de categorias no esta vacio, es decir, si tiene algun checkbox marcado, y el valor de este checkbox
+      //no corresponde al atributo data-category="${event.category}" de mis cards, la card se oculta
     }
-    card.style.display = showCard ? 'block' : 'none';
+
+
+    card.style.display = showCard ? 'block' : 'none'; //Dependiendo de si la variable showCard es verdadera o falsa, la card
+    //toma un valor de display de tipo block, o de none (no visible)
+
+
     if (showCard) {
       visibleCards++;
-    }
+    } 
+  //Si el valor de showCard es visible, se suma un 1 a la variable visibleCards, que se usa a modo de contador de las cards que efectivamente
+  //son visibles segun los filtros aplicados o la falta de filtros aplicados
   }
 
   if (visibleCards === 0) {
+  //Si la variable showCard es 0, es decir, ninguna card es visible (showCard funciona como contador, si es nulo, es porque ninguna card
+  //tiene la propiedad blobk del card.style.display = showCard ? 'block'  )
+  //Entonces, si ninguna card es visible, hay que mostrar un mensaje de error
+
     messageContainer.innerHTML = 'No se encontraron resultados. Por favor, busca de nuevo.';
+  //messageContainer refiere a un div que tengo en el mismo contenedor de las cards, que inicialmente se encuentra vacio (no se ve)
+  //Si se cumple la condicion de que no haya cards visibles, ese div se llena con el texto de error especificado
   } else {
     messageContainer.innerHTML = '';
+//Si visibleCards > 0 , o sea, si hay cards visibles, ese contenedor pasa a estar vacio para que no muestre nada.
+//Esto lo hago para evitar meter texto al pedo que me moleste la visualización de mi página
   }
 }
 
+
+
 searchInput.addEventListener('input', buscarYFiltrar);
+//searchInput, la barra de busqueda, ejecuta la función de buscar que declaré antes, a medida que voy introduciendo o borrando texto
+//Si no, tendria que usar un boton y ejecutar la funcion al apretar el boton, pero esto es mejor porque se actualiza solo
 
 for (let checkbox of checkboxes) {
   checkbox.addEventListener("change", buscarYFiltrar);
+//Cuando se marca un checkbox, se ejecuta la función de buscar que declaré antes
 }
