@@ -14,10 +14,8 @@ for(let event of data.events){
 
   if (event.date < (data.currentDate)){
     let card = document.createElement("div");
-   
-    
-    card.innerHTML = `
 
+    card.innerHTML = `
         <div class="card h-100" data-category="${event.category}">
             <img src="${event.image}" class="card-img-top" alt="..."></img>
             <div class="card-body text-center">
@@ -25,19 +23,18 @@ for(let event of data.events){
                 <p class="card-text">${event.description}</p>
                 <div class="card_bottom">
                     <h5>Price: $ ${event.price}</h5>
-                    <button onclick="window.location.href='./details.html?category=${event.category}&image=${event.image}&name=${event.name}&date=${event.date}&place=${event.place}&description=${event.description}&price=${event.price}';"
-                    class="card_bottom_button">
-                        Ver mas
-                    </button>
+                    <button class="card_bottom_button">Ver mas</button>
                 </div>
             </div>
         </div>
     `;
 
+    let button = card.querySelector(".card_bottom_button");
+    button.addEventListener("click", () => {
+        window.location.href = `./details.html?category=${event.category}&image=${event.image}&name=${event.name}&date=${event.date}&place=${event.place}&description=${event.description}&price=${event.price}`;
+    });
 
-
-eventContainer.appendChild(card); //Luego de generar toda la variable card, con appendChild se la sumo al div de id #cards-row que 
-//tengo como contenedor principal de las cards
+    eventContainer.appendChild(card);
 }
 }
 
@@ -105,7 +102,7 @@ function buscarYFiltrar() {
   for (let card of cards) { //recorre cada card de la constante cards, la que declare antes y me selecciona todos los elementos con clase card
     const cardName = card.getElementsByTagName('h3')[0].innerText.toLowerCase(); //En h3 tengo el nombre, paso todo a minus para evitar error
     const cardDescription = card.getElementsByTagName('p')[0].innerText.toLowerCase(); // en el p tengo la descripción, lo mismo que arriba
-    const cardCategories = card.dataset.category.split(" "); //Esto no se bien como funciona, pero me toma el valor de la category que puse en
+    const cardCategories = card.dataset.category.split(","); //Esto no se bien como funciona, pero me toma el valor de la category que puse en
     //la creación de las cards. HELP ME!
     let showCard = true; //Por defecto, mi variable que indica si la carta se muestra o no, esta activo
 
