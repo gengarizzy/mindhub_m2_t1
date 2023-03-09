@@ -65,29 +65,19 @@
    
 
     <main>
-      <nav id="navbar" class="navbar navbar-expand-lg bg-light align-items-center">
-          <div id="nav_container" class="container-fluid align-items-center">
-           
-            <div id="ul_navbar_div" class="align-items-center" >
-              <ul id="ul_navbar" class="navbar-nav me-auto mb-2 mb-lg-0 ">
-
+        <nav id="navbar" class="navbar navbar-expand-lg bg-light align-items-center">
+            <div id="nav_container" class="container-fluid align-items-center d-flex justify-content-between" style="flex-direction: row-reverse;">
+              <div class="search-bar" style="order: 1;">
+                <input type="text" id="search-input" placeholder="Buscar por nombre o categoria">
+              </div>
+              <div id="ul_navbar_div" class="align-items-center" style="order: 2;">
+                <ul id="ul_navbar" class="navbar-nav me-auto mb-2 mb-lg-0">
                   
-                 
-               
-              </ul>
-              
-              <div class="search-bar">
-                  <input type="text" id="search-input" placeholder="Buscar por nombre o categoria">
-                  
-                </div>
-               
-              
-              
+                </ul>
+              </div>
             </div>
-  
-            
-        </nav>
-  
+          </nav>
+          
   
         
               <div id="cards-row">

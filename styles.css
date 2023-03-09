@@ -35,6 +35,16 @@
     gap: 1em;
 }
 
+
+
+
+#navbar_container{
+    display: flex;
+    flex-direction: row;
+    background-color: red !important;
+    justify-content: space-between;
+}
+
 #header_ul_links{
     right: 4em !important;
     list-style-type: none;
