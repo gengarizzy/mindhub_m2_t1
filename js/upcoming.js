@@ -1,21 +1,15 @@
 
-
-
 async function getData() {
   try { //Intento
     const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing'); //declaro la constante response
     //esta costante equivale a contactar a dicha api
     const data = await response.json();  //la constante data equivale al json de respuesta de la api
-
-
-    //Una vez que tengo la informacion que le pedi a la API, ejecuto una funcion que contiene mi codigo anterior
-
-
     codigoFuncional(data); //uso mi funcion que contiene el codigo anterior, y le paso el parametro (json de respuesta de la API)
   } catch(error) { //Si hay un error, muestro error en consola
-    console.log('Te falla, solucionalo asi no te hacen bullying!!!!!!! FALLA getData()', error);
+    console.log('Te falla, solucionalo asi no te hacen bullying!!', error);
   }
 }
+
 
 //Una vez que tengo mi funcion getData(), la que contiene el await fetch para pedir los datos y luego almacenarlos en la constante data,
 //Y luego ejecuta una funcion que contiene mi codigo funcional anterior (la declare mas abajo), tengo que llamarla para usarla

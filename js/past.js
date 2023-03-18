@@ -1,4 +1,5 @@
 
+
 async function getData() {
   try { //Intento
     const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing'); //declaro la constante response
@@ -9,7 +10,6 @@ async function getData() {
     console.log('Te falla, solucionalo asi no te hacen bullying!!', error);
   }
 }
-
 getData(); //Llamo a la funcion anterior de arriba, que hace todo lo del try y el catch
 
 
