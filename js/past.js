@@ -1,15 +1,25 @@
 
-import data from './data.js';
+async function getData() {
+  try { //Intento
+    const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing'); //declaro la constante response
+    //esta costante equivale a contactar a dicha api
+    const data = await response.json();  //la constante data equivale al json de respuesta de la api
+    codigoFuncional(data); //uso mi funcion que contiene el codigo anterior, y le paso el parametro (json de respuesta de la API)
+  } catch(error) { //Si hay un error, muestro error en consola
+    console.log('Te falla, solucionalo asi no te hacen bullying!!', error);
+  }
+}
 
-// ME PASE LOS DATOS DEL DATA.JS QUE NOS ENTREGARON, PUSE currentDate como un String, events como un Array
-// Luego hago una variable para identificar al contenedor de las cards de mi html un getElementById
-// De ahi, genero una variable card para crear un div, al cual le asigno la clase deseada y con innerHTML le pongo el contenido
-// Para rellenar los datos que me piden, por cada event de events, uso cada valor event.valor
+getData(); //Llamo a la funcion anterior de arriba, que hace todo lo del try y el catch
 
 
 
-let eventContainer = document.getElementById("cards-row");
+// Función que recopila mi codigo anterior funcional
+function codigoFuncional(data) {
 
+  let eventContainer = document.getElementById("cards-row");
+
+  
 for(let event of data.events){
 
   if (event.date < (data.currentDate)){
@@ -159,3 +169,18 @@ for (let checkbox of checkboxes) {
   checkbox.addEventListener("change", buscarYFiltrar);
 //Cuando se marca un checkbox, se ejecuta la función de buscar que declaré antes
 }
+
+  // Aquí puedes colocar el código que trabaja con la variable data
+  console.log(data);
+  // ...
+}
+
+
+
+// ME PASE LOS DATOS DEL DATA.JS QUE NOS ENTREGARON, PUSE currentDate como un String, events como un Array
+// Luego hago una variable para identificar al contenedor de las cards de mi html un getElementById
+// De ahi, genero una variable card para crear un div, al cual le asigno la clase deseada y con innerHTML le pongo el contenido
+// Para rellenar los datos que me piden, por cada event de events, uso cada valor event.valor
+
+
+

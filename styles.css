@@ -212,12 +212,13 @@
     
   }
 
+
   .card {
-    max-height: 600px; /* altura máxima para el contenedor de la tarjeta */
-    max-width: 600px;
+    height: 600px; /* alt   ura máxima para el contenedor de la tarjeta */
+    width: 600px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
+    margin-top: 25px;
     margin-left: 50px;
     
    
@@ -237,6 +238,7 @@
 .card_bottom{
     display: flex;
     justify-content: space-between;
+   
 }
 
 .card_bottom_button{
