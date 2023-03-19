@@ -24,13 +24,9 @@ function codigoFuncional(data) {
 //Decidi resolverlo en 3 partes para evitar continuar perdiendome. Luego, recopilo cada parte en una funcion y la ejecuto
   function eventsStatistics(){
 
-
-
     // Declaro los primeros 2 arrays, los cuales contienen:
   let eventsAssistancePercentage = []; //Nombre y %asistencia de cada evento 
   let eventsCapacity = []; //Nombre y %asistencia de cada evento
-
-
 
 
   // En este for genero los arrays necesarios para la primer parte
@@ -49,8 +45,6 @@ function codigoFuncional(data) {
   }
 
 
-
-
   // Luego declaro los otros 3, cuyos valores provienen de haber ordenado los arrays anteriores
   // Estos provienen de ordenar los anteriores. Utilizo SORT para ordenarlos segun lo necesito
   let eventsWithHighestAssistance = [...eventsAssistancePercentage].sort((a, b) => b['eventAssistance'] - a['eventAssistance']); //Mayor a menor
@@ -58,13 +52,8 @@ function codigoFuncional(data) {
   let eventsWithLargerCapacity = eventsCapacity.sort((a, b) => b['eventCapacity'] - a['eventCapacity']);
 
 
-
-
-
 // Ahora genero las filas de la tabla usando los arrays ya ordenados. Hago un TOP 3
 let eventsStatisticsTable = document.getElementById("events_statistics_tbody") //llamo la tbody correspondiente a Events Statistics de mi table
-
-
 //Como quiero un top 3, hago un for de 3 iteraciones. Si quiero mas, cambio el valor que cierra el for. 
   for (let i = 0; i < 3; i++) {
   
@@ -90,7 +79,160 @@ eventsStatistics(); //Llamo a la funcion
 
 
 
-  
+function upcomingEventsStatistics(){
+ 
+  console.log("upcomingEventsStatistics function console log");
+
+  let UpcomingCategories = []; 
+
+  for(let event of data.events){
+
+    if (event.date >= (data.currentDate)){
+
+      UpcomingCategory = event.category;
+      UpcomingRevenues = (event.price * event.estimate);
+      UpcomingAttendance = (event.estimate / event.capacity )*100;
+
+     UpcomingCategories.push({UpcomingCategory , UpcomingRevenues, UpcomingAttendance});
 
   
+  }
+  
 }
+
+console.log(UpcomingCategories);
+
+const UpcomingCategoriesTotales = UpcomingCategories.reduce((acc, event) => {
+  const index = acc.findIndex((item) => item.UpcomingCategory === event.UpcomingCategory);
+  if (index === -1) {
+    acc.push({
+      UpcomingCategory: event.UpcomingCategory,
+      UpcomingRevenues: event.UpcomingRevenues,
+      UpcomingAttendance: event.UpcomingAttendance,
+      count: 1,
+    });
+  } else {
+    acc[index].UpcomingRevenues += event.UpcomingRevenues;
+    acc[index].UpcomingAttendance += event.UpcomingAttendance;
+    acc[index].count += 1;
+  }
+  return acc;
+}, []);
+
+UpcomingCategoriesTotales.forEach((item) => {
+  item.UpcomingAttendance /= item.count;
+});
+
+console.log(UpcomingCategoriesTotales);
+
+const UpcomingCategoriesTotalesOrdenado = UpcomingCategoriesTotales.sort((a, b) => b.UpcomingRevenues - a.UpcomingRevenues);
+
+console.log(UpcomingCategoriesTotalesOrdenado);
+
+
+let UpcomingEventsStatisticsTable = document.getElementById("upcoming_statistics_tbody");
+  for (let i = 0; i < 5; i++) {
+  
+
+    //creo una table row y sus correspondientes table data.
+    //El primer td corresponde a la columna de mayor %asistencia
+    //El segundo td corresponde a la columna de menor %asistencia
+    //El tercer td corresponde a la columna de evento con mayor capacidad
+    let fila = document.createElement('tr');
+    fila.innerHTML = `
+      <td>${UpcomingCategoriesTotalesOrdenado[i].UpcomingCategory}</td>
+      <td>${UpcomingCategoriesTotalesOrdenado[i].UpcomingRevenues}</td>
+      <td>${UpcomingCategoriesTotalesOrdenado[i].UpcomingAttendance}%</td>
+    `;
+    //Utilizo los arrays que obtuve de ordenar mis 2 primeros arrays de la funcion, y uso el i para obtener los valores de la misma posicion
+    //en cada uno de ellos
+  
+   UpcomingEventsStatisticsTable.appendChild(fila);
+    //Sumo el contenido del tbody y se lo mando a su respectivo contenedor identificado como events_statistics_tbody
+  }
+
+
+
+
+
+}//Llave upcomingEventsStatistics
+upcomingEventsStatistics();
+
+
+
+function pastEventsStatistics(){
+ 
+  console.log("pastEventsStatistics function console log");
+
+  let PastCategories = []; 
+
+  for(let event of data.events){
+
+    if (event.date < data.currentDate){
+
+      PastCategory = event.category;
+      PastRevenues = (event.price * event.assistance  );
+      PastAttendance = (event.assistance / event.capacity )*100;
+
+     PastCategories.push({PastCategory , PastRevenues, PastAttendance});
+
+  
+  }
+  
+}
+
+console.log(PastCategories);
+
+const PastCategoriesTotales = PastCategories.reduce((acc, event) => {
+  const index = acc.findIndex((item) => item.PastCategory === event.PastCategory);
+  if (index === -1) {
+    acc.push({
+      PastCategory: event.PastCategory,
+      PastRevenues: event.PastRevenues,
+      PastAttendance: event.PastAttendance,
+      count: 1,
+    });
+  } else {
+    acc[index].PastRevenues += event.PastRevenues;
+    acc[index].PastAttendance += event.PastAttendance;
+    acc[index].count += 1;
+  }
+  return acc;
+}, []);
+
+PastCategoriesTotales.forEach((item) => {
+  item.PastAttendance /= item.count;
+});
+
+console.log(PastCategoriesTotales);
+
+const PastCategoriesTotalesOrdenado = PastCategoriesTotales.sort((a, b) => b.PastRevenues - a.PastRevenues);
+
+console.log(PastCategoriesTotalesOrdenado);
+
+
+let PastEventsStatisticsTable = document.getElementById("past_statistics_tbody");
+  for (let i = 0; i < 5; i++) {
+  
+
+    //creo una table row y sus correspondientes table data.
+    //El primer td corresponde a la columna de mayor %asistencia
+    //El segundo td corresponde a la columna de menor %asistencia
+    //El tercer td corresponde a la columna de evento con mayor capacidad
+    let fila = document.createElement('tr');
+    fila.innerHTML = `
+      <td>${PastCategoriesTotalesOrdenado[i].PastCategory}</td>
+      <td>${PastCategoriesTotalesOrdenado[i].PastRevenues}</td>
+      <td>${PastCategoriesTotalesOrdenado[i].PastAttendance}%</td>
+    `;
+    //Utilizo los arrays que obtuve de ordenar mis 2 primeros arrays de la funcion, y uso el i para obtener los valores de la misma posicion
+    //en cada uno de ellos
+  
+   PastEventsStatisticsTable.appendChild(fila);
+    //Sumo el contenido del tbody y se lo mando a su respectivo contenedor identificado como events_statistics_tbody
+  }
+
+}
+
+pastEventsStatistics();
+} //Llave codigoFuncional()
