@@ -54,8 +54,8 @@ function codigoFuncional(data) {
 
 // Ahora genero las filas de la tabla usando los arrays ya ordenados. Hago un TOP 3
 let eventsStatisticsTable = document.getElementById("events_statistics_tbody") //llamo la tbody correspondiente a Events Statistics de mi table
-//Como quiero un top 3, hago un for de 3 iteraciones. Si quiero mas, cambio el valor que cierra el for. 
-  for (let i = 0; i < 3; i++) {
+//Como quiero un top 5, hago un for de 3 iteraciones. Si quiero mas, cambio el valor que cierra el for. 
+  for (let i = 0; i < 5; i++) {
   
 
     //creo una table row y sus correspondientes table data.
@@ -141,8 +141,6 @@ const UpcomingCategoriesTotales = UpcomingCategories.reduce((acc, event) => {
   return acc;
 }, []);
 
-
-
 UpcomingCategoriesTotales.forEach((item) => {
   item.UpcomingAttendance /= item.count;
 });
@@ -157,7 +155,7 @@ console.log(UpcomingCategoriesTotalesOrdenado);
 
 
 let UpcomingEventsStatisticsTable = document.getElementById("upcoming_statistics_tbody");
-  for (let i = 0; i < 5; i++) { //TOP 5 CATEGORIES
+  for (let i = 0; i < 6; i++) { //TOP 6 CATEGORIES
   
 
     //creo una table row y sus correspondientes table data.
@@ -196,9 +194,9 @@ function pastEventsStatistics(){
 
     if (event.date < data.currentDate){
 
-      PastCategory = event.category;
-      PastRevenues = (event.price * event.assistance  );
-      PastAttendance = (event.assistance / event.capacity )*100;
+     let PastCategory = event.category;
+      let PastRevenues = (event.price * event.assistance  );
+      let PastAttendance = (event.assistance / event.capacity )*100;
 
      PastCategories.push({PastCategory , PastRevenues, PastAttendance});
 
@@ -238,7 +236,7 @@ console.log(PastCategoriesTotalesOrdenado);
 
 
 let PastEventsStatisticsTable = document.getElementById("past_statistics_tbody");
-  for (let i = 0; i < 5; i++) { //TOP 5 CATEGORIES
+  for (let i = 0; i < 6; i++) { //TOP 6 CATEGORIES
   
 
     //creo una table row y sus correspondientes table data.
