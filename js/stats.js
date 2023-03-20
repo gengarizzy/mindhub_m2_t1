@@ -80,9 +80,14 @@ eventsStatistics(); //Llamo a la funcion
 
 
 function upcomingEventsStatistics(){
- 
-  console.log("upcomingEventsStatistics function console log");
 
+  //Esta funcion es muy similar a la siguiente para los eventos pasados, solo cambia el if, y Upcoming cambia por Past, para mantener 
+  //la estructura
+ 
+  
+
+
+//Declaro un array que va a contener la categoria, las ganancias estimadas y la asistencia estimada
   let UpcomingCategories = []; 
 
   for(let event of data.events){
@@ -94,14 +99,31 @@ function upcomingEventsStatistics(){
       UpcomingAttendance = (event.estimate / event.capacity )*100;
 
      UpcomingCategories.push({UpcomingCategory , UpcomingRevenues, UpcomingAttendance});
+     //Luego de iterar los eventos con una fecha mayor a la actual, es decir, eventos futuros, hago un push al array que declare antes
+     // Mas adelante, voy a filtar este array para sumar los valores de las ganancias estimadas de cada categoria
+     //y un promedio de la asistencia
 
   
   }
   
 }
 
-console.log(UpcomingCategories);
 
+//Explicacion detallada de esta parte del codigo
+
+/*
+Este código es una función de reducción en JavaScript. La función reduce() se utiliza para reducir los elementos de un array a un solo valor.
+ En este caso, la función reduce() se utiliza para reducir los elementos de UpcomingCategories a un solo valor.
+  La función reduce() toma dos argumentos: el primero es una función de devolución de llamada que se ejecuta en cada elemento del array, 
+  y el segundo es el valor inicial. En este caso, el valor inicial es un array vacío. La función de devolución de llamada
+   toma dos argumentos: el acumulador y el valor actual. El acumulador es el valor devuelto por la función de devolución de llamada 
+   en la iteración anterior, y el valor actual es el valor actual del array. La función de devolución de llamada devuelve un valor 
+   que se convierte en el acumulador para la siguiente iteración. En este caso, la función de devolución de llamada comprueba 
+   si el UpcomingCategory ya está en el array. Si no está en el array, se agrega al array con UpcomingRevenues, UpcomingAttendance y count 
+   establecidos en los valores de event. Si ya está en el array, se actualizan los valores de UpcomingRevenues, UpcomingAttendance y count.
+    Al final, la función reduce() devuelve el array acumulado
+
+*/
 const UpcomingCategoriesTotales = UpcomingCategories.reduce((acc, event) => {
   const index = acc.findIndex((item) => item.UpcomingCategory === event.UpcomingCategory);
   if (index === -1) {
@@ -119,19 +141,23 @@ const UpcomingCategoriesTotales = UpcomingCategories.reduce((acc, event) => {
   return acc;
 }, []);
 
+
+
 UpcomingCategoriesTotales.forEach((item) => {
   item.UpcomingAttendance /= item.count;
 });
 
-console.log(UpcomingCategoriesTotales);
 
+
+
+//Ordeno por las ganancias estimadas de cada categoria, de mayor a menor
 const UpcomingCategoriesTotalesOrdenado = UpcomingCategoriesTotales.sort((a, b) => b.UpcomingRevenues - a.UpcomingRevenues);
 
 console.log(UpcomingCategoriesTotalesOrdenado);
 
 
 let UpcomingEventsStatisticsTable = document.getElementById("upcoming_statistics_tbody");
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) { //TOP 5 CATEGORIES
   
 
     //creo una table row y sus correspondientes table data.
@@ -148,7 +174,7 @@ let UpcomingEventsStatisticsTable = document.getElementById("upcoming_statistics
     //en cada uno de ellos
   
    UpcomingEventsStatisticsTable.appendChild(fila);
-    //Sumo el contenido del tbody y se lo mando a su respectivo contenedor identificado como events_statistics_tbody
+    //Sumo el contenido del tbody y se lo mando a su respectivo contenedor
   }
 
 
@@ -212,7 +238,7 @@ console.log(PastCategoriesTotalesOrdenado);
 
 
 let PastEventsStatisticsTable = document.getElementById("past_statistics_tbody");
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) { //TOP 5 CATEGORIES
   
 
     //creo una table row y sus correspondientes table data.
