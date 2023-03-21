@@ -10,7 +10,10 @@
 }
 
 
-
+#message-container{
+    display: flex;
+    justify-content: center;
+}
 
 
 /* Desktop */
@@ -52,20 +55,21 @@
 
 #header_ul_links li{
     display: flex;;
-    font-size: 1em;
+    font-size: 1.5em;
     background-color: white;
-    padding: 0.3em;
     border: 1px solid black;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 6em;
+    width: 5em;
     height: 3em;
+    
     
 }
 
 #header_ul_links a{
     text-decoration: none;
+    
 }
 
 #name_and_arrows{
@@ -131,27 +135,53 @@
 }
 
 #details_div{
-    
+    display: flex;
     width: 80vw;
     height: 60vh;
-    justify-content: center;
+    justify-content: space-between !important;
     
     
 }
 
 #details_img{
-    width: 20em;
-    height: 20em;
-    margin-left: 5em;
-    border: 1px solid black;
+   width: 50%;
+   height: 90%;
+   margin-left: 5%;
+}
+
+#details_imagen{
+    width: 100%;
+    height: 100%;
 }
 
 #details_info{
-    width: 20em;
-    height: 20em;
+    width: 35em;
+    height: 90%;
+    margin-right: 5%;
+    display: flex;
+    text-align: center !important;;
+
     flex-direction: column;
-    margin-right: 5em;
-    border: 1px solid black;
+   
+    
+}
+
+#details_info h2{
+    color:black !important;;
+    font-size: 5em !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#details_info h3{
+    font-size: 3em !important;
+}
+
+#details_info h4{
+    font-size: 3em !important;
+}
+
+#details_info h6{
+    font-size: 2em !important;
 }
 
 
@@ -188,7 +218,17 @@
     padding: 0 2em 0 2em; /*: top right bottom left*/
 }
 
+#search-input{
+    color: rgb(82, 78, 78);
+    width: 30em;
+    height: 1em;
+    font-size: 2em;
+}
 
+
+.nav-item span{
+    font-size: 1em;
+}
 
 #navbar_input{
     width: 100em;
@@ -208,10 +248,16 @@
 #cards-row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em 0;
    
     
   }
-
+    #myImage{
+        width: 50vw;
+        height: 100%;
+        padding-top: 0.5em;
+    }
 
   .card {
     height: 600px; /* alt   ura máxima para el contenedor de la tarjeta */
@@ -220,6 +266,9 @@
     flex-direction: column;
     margin-top: 25px;
     margin-left: 50px;
+    border: 1px outset gray;
+    
+    
     
    
   }
@@ -230,8 +279,6 @@
   }
 
 
-    height: 10%;
-    width:10% ;
    
 
 
@@ -415,6 +462,13 @@ section{
 
 
     /* details */
+
+     #myImage{
+        width: 90vw;
+        height: 100%;
+        padding-top: 0.5em;
+     }
+    
 
     
 

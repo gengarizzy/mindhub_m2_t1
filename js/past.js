@@ -145,18 +145,18 @@ function buscarYFiltrar() {
   }
 
   if (visibleCards === 0) {
-  //Si la variable showCard es 0, es decir, ninguna card es visible (showCard funciona como contador, si es nulo, es porque ninguna card
-  //tiene la propiedad blobk del card.style.display = showCard ? 'block'  )
-  //Entonces, si ninguna card es visible, hay que mostrar un mensaje de error
-
-    messageContainer.innerHTML = 'No se encontraron resultados. Por favor, busca de nuevo.';
-  //messageContainer refiere a un div que tengo en el mismo contenedor de las cards, que inicialmente se encuentra vacio (no se ve)
-  //Si se cumple la condicion de que no haya cards visibles, ese div se llena con el texto de error especificado
-  } else {
-    messageContainer.innerHTML = '';
-//Si visibleCards > 0 , o sea, si hay cards visibles, ese contenedor pasa a estar vacio para que no muestre nada.
-//Esto lo hago para evitar meter texto al pedo que me moleste la visualización de mi página
-  }
+    //Si la variable showCard es 0, es decir, ninguna card es visible (showCard funciona como contador, si es nulo, es porque ninguna card
+    //tiene la propiedad blobk del card.style.display = showCard ? 'block'  )
+    //Entonces, si ninguna card es visible, hay que mostrar un mensaje de error
+  
+      messageContainer.innerHTML = '<img id="myImage" src="./assets/sadpika.jpg" alt="">';
+    //messageContainer refiere a un div que tengo en el mismo contenedor de las cards, que inicialmente se encuentra vacio (no se ve)
+    //Si se cumple la condicion de que no haya cards visibles, ese div se llena con el texto de error especificado
+    } else {
+      messageContainer.innerHTML = '';
+  //Si visibleCards > 0 , o sea, si hay cards visibles, ese contenedor pasa a estar vacio para que no muestre nada.
+  //Esto lo hago para evitar meter texto al pedo que me moleste la visualización de mi página
+    }
 }
 
 

@@ -18,11 +18,14 @@ const event = {
 
 // Usa los valores de event para mostrar la información en la página
 document.getElementById('details_img').innerHTML = `
-  <img src="${event.image}" alt="details image">
+
+
+  <img id="details_imagen" src="${event.image}" alt="details image">
+  
 `;
 document.getElementById('details_info').innerHTML = `
-  <h3>${event.name}</h3>
-  <h6>${event.date}</h6>
-  <h6>${event.place}</h6>
+  <h2>${event.name}</h2>
+  <h3>${event.date}</h3>
+  <h4>${event.place}</h4>
   <h6>${event.description}</h6>
 `;

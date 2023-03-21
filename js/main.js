@@ -143,12 +143,13 @@ function buscarYFiltrar() {
   //son visibles segun los filtros aplicados o la falta de filtros aplicados
   }
 
+  
   if (visibleCards === 0) {
   //Si la variable showCard es 0, es decir, ninguna card es visible (showCard funciona como contador, si es nulo, es porque ninguna card
   //tiene la propiedad blobk del card.style.display = showCard ? 'block'  )
   //Entonces, si ninguna card es visible, hay que mostrar un mensaje de error
 
-    messageContainer.innerHTML = 'No se encontraron resultados. Por favor, busca de nuevo.';
+    messageContainer.innerHTML = '<img id="myImage" src="./assets/sadpika.jpg" alt="">';
   //messageContainer refiere a un div que tengo en el mismo contenedor de las cards, que inicialmente se encuentra vacio (no se ve)
   //Si se cumple la condicion de que no haya cards visibles, ese div se llena con el texto de error especificado
   } else {
